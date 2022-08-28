@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 SizedBox RestaurantsList(var context) {
   return SizedBox(
-    height: MediaQuery.of(context).size.height * 0.18,
+    height: MediaQuery.of(context).size.height * 0.20,
     width: double.infinity,
     child: ListView(
       scrollDirection: Axis.horizontal,
@@ -62,7 +62,7 @@ TextButton RestCards(String Name, String imageAssets, var context) {
           padding: const EdgeInsets.only(top: 10),
           child: Text(
             Name,
-            style: const TextStyle(fontSize: 18, color: Colors.black),
+            style: const TextStyle(fontSize: 16, color: Colors.black),
           ),
         )
       ],

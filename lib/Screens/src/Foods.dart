@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:talabatey_ui/Screens/restaurantInfo.dart';
 
 Padding FoodCards(
     var context,
@@ -13,7 +14,17 @@ Padding FoodCards(
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 10),
     child: TextButton(
-      onPressed: (){},
+      onPressed: () {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: ((context) => RestaurantInfoPage(
+                  name: Name,
+                  Imageasset: ImageAsset,
+                  deleverprice: "سعر التوصيل: $DeleverPrice د.ع",
+                  location: Location,
+                  lowestpeice: "الحد الادنى للطلب: $LowestPrice د.ع",
+                  rate: Rate,
+                ))));
+      },
       child: SizedBox(
         height: 250,
         child: FoodCard(
