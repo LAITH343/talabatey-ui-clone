@@ -250,7 +250,7 @@ class _RestaurantInfoPageState extends State<RestaurantInfoPage> {
                               width: double.infinity,
                               color: Colors.white,
                               height:
-                                  MediaQuery.of(context).size.height * 0.4,
+                                  MediaQuery.of(context).size.height * 0.483,
                               child: ListView(
                                 children: [
                                   if (_tabsindex == 2)

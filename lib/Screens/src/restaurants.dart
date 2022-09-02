@@ -1,40 +1,47 @@
 import 'package:flutter/material.dart';
 
+class RestaurantsInfo {
+  String? name;
+  String? imgpath;
+  RestaurantsInfo({
+    required this.name,
+    required this.imgpath,
+  });
+}
+
+List<RestaurantsInfo> restaurant_list = [
+  RestaurantsInfo(name: "بلوشي", imgpath: "images/restaurant-logo.jpg"),
+  RestaurantsInfo(name: "بلوشي", imgpath: "images/rest2.png"),
+  RestaurantsInfo(name: "بلوشي", imgpath: "images/rest3.png"),
+  RestaurantsInfo(name: "بلوشي", imgpath: "images/restaurant-logo.jpg"),
+  RestaurantsInfo(name: "بلوشي", imgpath: "images/rest2.png"),
+  RestaurantsInfo(name: "بلوشي", imgpath: "images/rest3.png"),
+  RestaurantsInfo(name: "بلوشي", imgpath: "images/restaurant-logo.jpg"),
+  RestaurantsInfo(name: "بلوشي", imgpath: "images/rest2.png"),
+  RestaurantsInfo(name: "بلوشي", imgpath: "images/rest3.png"),
+  RestaurantsInfo(name: "بلوشي", imgpath: "images/restaurant-logo.jpg"),
+  RestaurantsInfo(name: "بلوشي", imgpath: "images/rest2.png"),
+  RestaurantsInfo(name: "بلوشي", imgpath: "images/rest3.png"),
+  RestaurantsInfo(name: "بلوشي", imgpath: "images/restaurant-logo.jpg"),
+  RestaurantsInfo(name: "بلوشي", imgpath: "images/rest2.png"),
+  RestaurantsInfo(name: "بلوشي", imgpath: "images/rest3.png"),
+  RestaurantsInfo(name: "بلوشي", imgpath: "images/restaurant-logo.jpg"),
+  RestaurantsInfo(name: "بلوشي", imgpath: "images/rest2.png"),
+  RestaurantsInfo(name: "بلوشي", imgpath: "images/rest3.png"),
+];
+
 SizedBox RestaurantsList(var context) {
   return SizedBox(
     height: MediaQuery.of(context).size.height * 0.20,
     width: double.infinity,
-    child: ListView(
+    child: ListView.builder(
       scrollDirection: Axis.horizontal,
       reverse: true,
-      children: [
-        RestCatgo(200, context),
-        RestCards("بلوشي", "images/restaurant-logo.jpg", context),
-        RestCards("بلوشي", "images/rest2.png", context),
-        RestCards("بلوشي", "images/rest3.png", context),
-        RestCards("بلوشي", "images/rest4.jpg", context),
-        RestCards("بلوشي", "images/rest5.jpg", context),
-        RestCards("بلوشي", "images/restaurant-logo.jpg", context),
-        RestCards("بلوشي", "images/rest2.png", context),
-        RestCards("بلوشي", "images/rest3.png", context),
-        RestCards("بلوشي", "images/rest4.jpg", context),
-        RestCards("بلوشي", "images/rest5.jpg", context),
-        RestCards("بلوشي", "images/restaurant-logo.jpg", context),
-        RestCards("بلوشي", "images/rest2.png", context),
-        RestCards("بلوشي", "images/rest3.png", context),
-        RestCards("بلوشي", "images/rest4.jpg", context),
-        RestCards("بلوشي", "images/rest5.jpg", context),
-        RestCards("بلوشي", "images/restaurant-logo.jpg", context),
-        RestCards("بلوشي", "images/rest2.png", context),
-        RestCards("بلوشي", "images/rest3.png", context),
-        RestCards("بلوشي", "images/rest4.jpg", context),
-        RestCards("بلوشي", "images/rest5.jpg", context),
-        RestCards("بلوشي", "images/restaurant-logo.jpg", context),
-        RestCards("بلوشي", "images/rest2.png", context),
-        RestCards("بلوشي", "images/rest3.png", context),
-        RestCards("بلوشي", "images/rest4.jpg", context),
-        RestCards("بلوشي", "images/rest5.jpg", context),
-      ],
+      itemCount: restaurant_list.length,
+      itemBuilder: (BuildContext context, index) => RestCards(
+          restaurant_list[index].name!,
+          restaurant_list[index].imgpath!,
+          context),
     ),
   );
 }

@@ -1,24 +1,54 @@
 import 'package:flutter/material.dart';
 
+// Create class to make pass paramenters better
+class Filters {
+  String? Label;
+  IconData? iconname;
+  Color? cardcolor;
+  Filters({
+    required this.Label,
+    required this.iconname,
+    required this.cardcolor,
+  });
+}
+
+List<Filters> filtercards = [
+  Filters(Label: "الكل", iconname: Icons.home_outlined, cardcolor: Colors.red),
+  Filters(
+      Label: "الخصومات",
+      iconname: Icons.discount_outlined,
+      cardcolor: Colors.grey),
+  Filters(
+      Label: "يدعم المحفضة",
+      iconname: Icons.wallet_travel,
+      cardcolor: Colors.grey),
+  Filters(
+      Label: "توصيل طلباتي",
+      iconname: Icons.delivery_dining,
+      cardcolor: Colors.grey),
+  Filters(
+      Label: "توصيل مجاني", iconname: Icons.gif_box, cardcolor: Colors.grey),
+  Filters(
+      Label: "حصري",
+      iconname: Icons.star_border_outlined,
+      cardcolor: Colors.grey),
+  Filters(
+      Label: "جديد", iconname: Icons.add_shopping_cart, cardcolor: Colors.grey),
+];
+
+
 SizedBox FiltersCards() {
   return SizedBox(
     height: 40,
     width: double.infinity,
-    child: ListView(
+    child: ListView.builder(
+      itemCount: filtercards.length,
       reverse: true,
       scrollDirection: Axis.horizontal,
-      children: [
-        const SizedBox(
-          width: 15,
-        ),
-        FilterCardMaker("الكل", Icons.home_outlined, Colors.red),
-        FilterCardMaker("الخصومات", Icons.discount_outlined, Colors.grey),
-        FilterCardMaker("يدعم المحفضة", Icons.wallet_travel, Colors.grey),
-        FilterCardMaker("توصيل طلباتي", Icons.delivery_dining, Colors.grey),
-        FilterCardMaker("توصيل مجاني", Icons.gif_box, Colors.grey),
-        FilterCardMaker("حصري", Icons.star_border_outlined, Colors.grey),
-        FilterCardMaker("جديد", Icons.add_shopping_cart, Colors.grey),
-      ],
+      itemBuilder: (BuildContext context, index) => FilterCardMaker(
+          filtercards[index].Label!,
+          filtercards[index].iconname!,
+          filtercards[index].cardcolor!),
     ),
   );
 }

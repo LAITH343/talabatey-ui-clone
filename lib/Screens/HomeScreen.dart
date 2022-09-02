@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:talabatey_ui/Screens/loginPage.dart';
 import 'package:talabatey_ui/Screens/src/AppBar.dart';
 import 'package:talabatey_ui/Screens/src/Filters.dart';
 import 'package:talabatey_ui/Screens/src/Foods.dart';
@@ -18,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     List<Widget> ScreensList = [
-      NotWorking(),
+      LoginPage(),
       NotWorking(),
       NotWorking(),
       MainScreen(context),
@@ -27,28 +28,32 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.white,
       appBar: _Cindex == 3 ? MyAppBar() : null,
       body: ScreensList[_Cindex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _Cindex,
-        iconSize: 25,
-        unselectedItemColor: Colors.grey,
-        selectedItemColor: Colors.red,
-        type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person_rounded), label: "الحساب"),
-          BottomNavigationBarItem(icon: Icon(Icons.list), label: "الطلبات"),
-          BottomNavigationBarItem(icon: Icon(Icons.wallet), label: "المحفظة"),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "الرئيسية",
-          ),
-        ],
-        onTap: (index) {
-          setState(() {
-            _Cindex = index;
-          });
-        },
-      ),
+      bottomNavigationBar: MyNavBar(),
+    );
+  }
+
+  BottomNavigationBar MyNavBar() {
+    return BottomNavigationBar(
+      currentIndex: _Cindex,
+      iconSize: 25,
+      unselectedItemColor: Colors.grey,
+      selectedItemColor: Colors.red,
+      type: BottomNavigationBarType.fixed,
+      items: const [
+        BottomNavigationBarItem(
+            icon: Icon(Icons.person_rounded), label: "الحساب"),
+        BottomNavigationBarItem(icon: Icon(Icons.list), label: "الطلبات"),
+        BottomNavigationBarItem(icon: Icon(Icons.wallet), label: "المحفظة"),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: "الرئيسية",
+        ),
+      ],
+      onTap: (index) {
+        setState(() {
+          _Cindex = index;
+        });
+      },
     );
   }
 
@@ -76,8 +81,9 @@ class _HomePageState extends State<HomePage> {
                   flexibleSpace: FiltersCards(),
                 ),
                 SliverList(
-                  delegate: SliverChildListDelegate([
-                    FoodCards(
+                  delegate: SliverChildBuilderDelegate(childCount: 20,
+                      (BuildContext context, index) {
+                    return FoodCards(
                       context,
                       "برجرات",
                       "images/Burgers.jpg",
@@ -87,74 +93,8 @@ class _HomePageState extends State<HomePage> {
                       "جيد جدا",
                       false,
                       true,
-                    ),
-                    FoodCards(
-                      context,
-                      "برجرات",
-                      "images/Burgers.jpg",
-                      5000,
-                      1500,
-                      "المنصور",
-                      "جيد جدا",
-                      true,
-                      true,
-                    ),
-                    FoodCards(
-                      context,
-                      "برجرات",
-                      "images/Burgers.jpg",
-                      5000,
-                      1500,
-                      "المنصور",
-                      "جيد جدا",
-                      true,
-                      false,
-                    ),
-                    FoodCards(
-                      context,
-                      "برجرات",
-                      "images/Burgers.jpg",
-                      5000,
-                      1500,
-                      "المنصور",
-                      "جيد جدا",
-                      true,
-                      false,
-                    ),
-                    FoodCards(
-                      context,
-                      "برجرات",
-                      "images/Burgers.jpg",
-                      5000,
-                      1500,
-                      "المنصور",
-                      "جيد جدا",
-                      false,
-                      true,
-                    ),
-                    FoodCards(
-                      context,
-                      "برجرات",
-                      "images/Burgers.jpg",
-                      5000,
-                      1500,
-                      "المنصور",
-                      "جيد جدا",
-                      true,
-                      true,
-                    ),
-                    FoodCards(
-                      context,
-                      "برجرات",
-                      "images/Burgers.jpg",
-                      5000,
-                      1500,
-                      "المنصور",
-                      "جيد جدا",
-                      false,
-                      true,
-                    ),
-                  ]),
+                    );
+                  }),
                 )
               ],
             ),

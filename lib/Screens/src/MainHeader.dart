@@ -23,16 +23,14 @@ SizedBox PopularRest() {
           height: 10,
         ),
         Expanded(
-          child: ListView(
+          child: ListView.builder(
+            itemCount: 20,
             reverse: true,
             scrollDirection: Axis.horizontal,
-            children: [
-              for (int i = 0; i < 20; i++)
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: RestCards("زرزور", "images/food.jpg"),
-                ),
-            ],
+            itemBuilder: (BuildContext context, index) => Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: RestCards("زرزور", "images/food.jpg"),
+            ),
           ),
         )
       ],
